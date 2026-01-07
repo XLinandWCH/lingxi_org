@@ -46,7 +46,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin, logo }) => {
           {isLogin ? '欢迎回来' : '灵析工作站注册'}
         </h2>
         <p className="text-gray-500 text-center text-sm mb-12">
-          {isLogin ? '请输入您的凭据访问核心智能体中心' : '仅需 30 秒即可开启您的私有 AI 体验'}
+          {isLogin ? '请输入您的凭据访问核心智能体中心' : '开启您的私有 AI 体验'}
         </p>
 
         {error && (
@@ -57,18 +57,18 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin, logo }) => {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <label className="block text-[10px] font-black text-gray-600 uppercase tracking-[0.2em]">邮箱地址</label>
+            <label className="block text-[10px] font-black text-gray-600 uppercase tracking-widest">邮箱地址</label>
             <input 
               type="email" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full bg-black/60 border border-white/10 rounded-2xl px-6 py-4 focus:border-[#00FF88] transition-colors outline-none text-sm text-white"
-              placeholder="请输入您的邮箱"
+              placeholder="admin@lingxi.ai"
               required
             />
           </div>
           <div className="space-y-2">
-            <label className="block text-[10px] font-black text-gray-600 uppercase tracking-[0.2em]">访问密码</label>
+            <label className="block text-[10px] font-black text-gray-600 uppercase tracking-widest">访问密码</label>
             <input 
               type="password" 
               value={password}
@@ -80,7 +80,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin, logo }) => {
           </div>
           {!isLogin && (
             <div className="space-y-2">
-              <label className="block text-[10px] font-black text-gray-600 uppercase tracking-[0.2em]">确认密码</label>
+              <label className="block text-[10px] font-black text-gray-600 uppercase tracking-widest">确认密码</label>
               <input 
                 type="password" 
                 value={confirmPassword}
@@ -105,7 +105,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin, logo }) => {
             onClick={() => setIsLogin(!isLogin)}
             className="text-sm font-bold text-gray-500 hover:text-[#00FF88] transition-colors"
           >
-            {isLogin ? '还没有账号？开启新旅程' : '已有账号？返回登录'}
+            {isLogin ? '还没有账号？创建您的空间' : '已有账号？返回登录'}
           </button>
         </div>
       </div>
