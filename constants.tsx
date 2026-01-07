@@ -1,0 +1,71 @@
+
+import React from 'react';
+
+export const COLORS = {
+  bg: '#0A0A0F',
+  primary: '#00FF88',
+  primaryHover: '#10B981',
+  secondary: '#8B5CF6',
+  surface: '#1F2937',
+  border: 'rgba(255, 255, 255, 0.05)',
+  textMain: '#FFFFFF',
+  textSecondary: '#D1D5DB',
+  textMuted: 'rgba(255, 255, 255, 0.4)',
+};
+
+export const DEFAULT_LOGO = "https://api.dicebear.com/7.x/shapes/svg?seed=lingxi&backgroundColor=00FF88";
+
+export const TESTIMONIALS = [
+  { name: "张明", role: "全栈工程师", text: "灵析的本地 RAG 速度快得惊人，完全解决了我对隐私的顾虑。" },
+  { name: "夏敏", role: "AI 研究员", text: "Artifacts 协议的实现非常超前，现在我的所有原型设计都在这里完成。" },
+  { name: "赵明泽", role: "企业 CTO", text: "私有化部署的首选方案，安全审计和权限控制做得很到位。" },
+  { name: "Wu Xing", role: "开源贡献者", text: "The MCP implementation is the cleanest I've ever seen. Highly extensible." },
+  { name: "Sarah Jenkins", role: "Lead Dev @ TechFlow", text: "终于有一款尊重开发者工作流和数据主权的 AI 工作站了。" },
+  { name: "Hiroshi Tanaka", role: "软件架构师", text: "本地推理延迟几乎为零，灵析改变了我的开发习惯。" },
+  { name: "Elena Rossi", role: "UI 设计师", text: "这种设计感与技术实力的结合，简直是数字时代的艺术品。" },
+];
+
+export const INITIAL_PLANS: any[] = [
+  {
+    name: "社区版",
+    price: "免费",
+    description: "适合个人开发者和极客探索 AI 潜力",
+    features: [
+      "自带 API Key 灵活接入",
+      "全量智库功能 (RAG)",
+      "工坊 Artifacts 预览",
+      "社区 MCP 插件支持",
+      "本地私有化部署"
+    ],
+    cta: "立即体验",
+    type: 'community'
+  },
+  {
+    name: "专业版",
+    price: "暂无计划",
+    description: "为高效创作者量身定制的增强体验",
+    features: [
+      "包含主流模型额度 (无需私有 Key)",
+      "多设备同步与云端备份",
+      "优先体验 Beta 功能",
+      "专属技术支持",
+      "无限 MCP 连接并发"
+    ],
+    cta: "开启订阅",
+    type: 'pro'
+  },
+  {
+    name: "企业版",
+    price: "暂无计划",
+    description: "完全私有化、定制化的团队智能中枢",
+    features: [
+      "企业级内网穿透与安全审计",
+      "多租户权限管理",
+      "私有模型微调接口",
+      "定制化插件开发支持",
+      "SLA 运维保障"
+    ],
+    cta: "获取方案",
+    type: 'enterprise'
+  }
+];

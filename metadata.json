@@ -1,0 +1,8 @@
+{
+  "name": "ling_xi",
+  "description": "身无彩凤双飞翼，心有灵析一点通。灵析是一个私有化、可扩展的桌面 AI 智能体工作站，提供智库、工坊、连接三大核心体系。",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
