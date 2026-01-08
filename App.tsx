@@ -11,7 +11,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import PluginMarket from './pages/PluginMarket';
 import DocsPage from './pages/DocsPage';
 import { User, UserRole, BlogPost, PricingPlan } from './types';
-import { INITIAL_PLANS, DEFAULT_LOGO } from './constants';
+import { GLOBAL_CONFIG } from './constants';
 
 const App: React.FC = () => {
   const [user, setUser] = useState<User | null>(() => {
@@ -19,17 +19,17 @@ const App: React.FC = () => {
     return saved ? JSON.parse(saved) : null;
   });
 
-  const [siteLogo, setSiteLogo] = useState(() => localStorage.getItem('lingxi_logo') || DEFAULT_LOGO);
-  const [heroScreenshot, setHeroScreenshot] = useState(() => localStorage.getItem('lingxi_hero_img') || "https://picsum.photos/seed/lingxi-main/1600/900");
-  const [videoLink, setVideoLink] = useState(() => localStorage.getItem('lingxi_video_url') || "#");
+  // 这里的初始值优先从 GLOBAL_CONFIG 读取，确保部署后的全局一致性
+  const [siteLogo, setSiteLogo] = useState(() => localStorage.getItem('lingxi_logo_preview') || GLOBAL_CONFIG.logo);
+  const [heroScreenshot, setHeroScreenshot] = useState(() => localStorage.getItem('lingxi_hero_preview') || GLOBAL_CONFIG.heroImage);
+  const [videoLink, setVideoLink] = useState(() => localStorage.getItem('lingxi_video_preview') || GLOBAL_CONFIG.videoLink);
   
-  // Platform specific links
-  const [winX64, setWinX64] = useState(() => localStorage.getItem('lx_win_x64') || "#");
-  const [winArm64, setWinArm64] = useState(() => localStorage.getItem('lx_win_arm64') || "#");
-  const [macOS, setMacOS] = useState(() => localStorage.getItem('lx_mac') || "#");
-  const [linux, setLinux] = useState(() => localStorage.getItem('lx_linux') || "#");
+  const [winX64, setWinX64] = useState(() => localStorage.getItem('lx_win_x64_preview') || GLOBAL_CONFIG.downloadLinks.winX64);
+  const [winArm64, setWinArm64] = useState(() => localStorage.getItem('lx_win_arm64_preview') || GLOBAL_CONFIG.downloadLinks.winArm64);
+  const [macOS, setMacOS] = useState(() => localStorage.getItem('lx_mac_preview') || GLOBAL_CONFIG.downloadLinks.macOS);
+  const [linux, setLinux] = useState(() => localStorage.getItem('lx_linux_preview') || GLOBAL_CONFIG.downloadLinks.linux);
 
-  const [quickStartDoc, setQuickStartDoc] = useState(() => localStorage.getItem('lingxi_doc_qs') || "欢迎来到灵析 (LingXi) 的世界。通过本指南，您将学会在 5 分钟内搭建属于您的私有化 AI 工作站。");
+  const [quickStartDoc, setQuickStartDoc] = useState(() => localStorage.getItem('lingxi_doc_qs_preview') || GLOBAL_CONFIG.quickStartDoc);
 
   const [blogs, setBlogs] = useState<BlogPost[]>(() => {
     const saved = localStorage.getItem('lingxi_blogs');
@@ -48,21 +48,22 @@ const App: React.FC = () => {
   });
 
   const [plans, setPlans] = useState<PricingPlan[]>(() => {
-    const saved = localStorage.getItem('lingxi_plans');
-    return saved ? JSON.parse(saved) : INITIAL_PLANS;
+    const saved = localStorage.getItem('lingxi_plans_preview');
+    return saved ? JSON.parse(saved) : GLOBAL_CONFIG.plans;
   });
 
+  // 预览模式下的本地存储
   useEffect(() => {
     localStorage.setItem('lingxi_blogs', JSON.stringify(blogs));
-    localStorage.setItem('lingxi_plans', JSON.stringify(plans));
-    localStorage.setItem('lingxi_logo', siteLogo);
-    localStorage.setItem('lingxi_hero_img', heroScreenshot);
-    localStorage.setItem('lingxi_video_url', videoLink);
-    localStorage.setItem('lingxi_doc_qs', quickStartDoc);
-    localStorage.setItem('lx_win_x64', winX64);
-    localStorage.setItem('lx_win_arm64', winArm64);
-    localStorage.setItem('lx_mac', macOS);
-    localStorage.setItem('lx_linux', linux);
+    localStorage.setItem('lingxi_plans_preview', JSON.stringify(plans));
+    localStorage.setItem('lingxi_logo_preview', siteLogo);
+    localStorage.setItem('lingxi_hero_preview', heroScreenshot);
+    localStorage.setItem('lingxi_video_preview', videoLink);
+    localStorage.setItem('lingxi_doc_qs_preview', quickStartDoc);
+    localStorage.setItem('lx_win_x64_preview', winX64);
+    localStorage.setItem('lx_win_arm64_preview', winArm64);
+    localStorage.setItem('lx_mac_preview', macOS);
+    localStorage.setItem('lx_linux_preview', linux);
   }, [blogs, plans, siteLogo, heroScreenshot, videoLink, quickStartDoc, winX64, winArm64, macOS, linux]);
 
   const handleLogin = (u: User) => {
