@@ -32,8 +32,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ videoLink, heroScreenshot }) 
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-[#00FF88]/5 blur-[120px] rounded-full pointer-events-none"></div>
         <div className="absolute top-40 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-[#8B5CF6]/5 blur-[100px] rounded-full pointer-events-none"></div>
 
-        <h1 className="text-4xl md:text-8xl font-black mb-8 tracking-tight leading-[1.1] animate-in fade-in slide-in-from-top-4 duration-1000">
-          身无彩凤双飞翼<br className="md:hidden" />
+        <h1 className="text-4xl md:text-8xl font-black mb-8 tracking-tight leading-[1.2] animate-in fade-in slide-in-from-top-4 duration-1000">
+          <div>身无彩凤双飞翼</div>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FF88] via-[#00FF88] to-[#8B5CF6]">
             心有灵析一点通
           </span>
