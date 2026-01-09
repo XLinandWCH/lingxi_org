@@ -19,7 +19,6 @@ const App: React.FC = () => {
     return saved ? JSON.parse(saved) : null;
   });
 
-  // 这里的初始值优先从 GLOBAL_CONFIG 读取，确保部署后的全局一致性
   const [siteLogo, setSiteLogo] = useState(() => localStorage.getItem('lingxi_logo_preview') || GLOBAL_CONFIG.logo);
   const [heroScreenshot, setHeroScreenshot] = useState(() => localStorage.getItem('lingxi_hero_preview') || GLOBAL_CONFIG.heroImage);
   const [videoLink, setVideoLink] = useState(() => localStorage.getItem('lingxi_video_preview') || GLOBAL_CONFIG.videoLink);
@@ -33,18 +32,8 @@ const App: React.FC = () => {
 
   const [blogs, setBlogs] = useState<BlogPost[]>(() => {
     const saved = localStorage.getItem('lingxi_blogs');
-    return saved ? JSON.parse(saved) : [
-      {
-        id: '1',
-        title: '灵析 v1.0 正式发布：您的下一代智能工作站',
-        excerpt: '经过半年的迭代，灵析终于迎来了里程碑式的版本更新。',
-        content: '今天我们非常激动地宣布灵析正式版本发布。灵析不仅是一个对话机器人，它是集智库、工坊、连接于一体的智能体工作站...',
-        author: '灵析团队',
-        date: '2024-05-20',
-        tags: ['版本更新', '公告'],
-        type: 'markdown'
-      }
-    ];
+    // 如果本地有预览库数据则加载预览，否则加载全局正式发布的博客
+    return saved ? JSON.parse(saved) : GLOBAL_CONFIG.blogs;
   });
 
   const [plans, setPlans] = useState<PricingPlan[]>(() => {
@@ -52,7 +41,6 @@ const App: React.FC = () => {
     return saved ? JSON.parse(saved) : GLOBAL_CONFIG.plans;
   });
 
-  // 预览模式下的本地存储
   useEffect(() => {
     localStorage.setItem('lingxi_blogs', JSON.stringify(blogs));
     localStorage.setItem('lingxi_plans_preview', JSON.stringify(plans));

@@ -18,6 +18,7 @@ export interface BlogPost {
   date: string;
   tags: string[];
   type: 'markdown' | 'block';
+  coverImage?: string; // Base64 或 URL
 }
 
 export interface PricingPlan {

@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { GLOBAL_CONFIG } from '../constants';
 
 interface FooterProps {
   logo: string;
@@ -19,7 +20,14 @@ const Footer: React.FC<FooterProps> = ({ logo }) => {
             隐私无忧，扩展无限。
           </p>
           <div className="flex gap-6">
-             <div className="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-[#00FF88]/20 transition-all cursor-pointer font-bold text-gray-400">GH</div>
+             <a 
+               href={GLOBAL_CONFIG.githubRepo} 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               className="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-[#00FF88]/20 transition-all cursor-pointer font-bold text-gray-400 no-underline"
+             >
+               GH
+             </a>
              <div className="w-10 h-10 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-[#8B5CF6]/20 transition-all cursor-pointer font-bold text-gray-400">DC</div>
           </div>
         </div>
@@ -55,7 +63,7 @@ const Footer: React.FC<FooterProps> = ({ logo }) => {
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-6 mt-24 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold text-gray-600 uppercase tracking-widest">
-        <p>© 2024 LINGXI WORKSTATION (OPENLINGXI TEAM). NO RIGHTS RESERVED ON YOUR DATA.</p>
+        <p>© 2026 LINGXI WORKSTATION (OPENLINGXI TEAM). NO RIGHTS RESERVED ON YOUR DATA.</p>
         <p>POWERED BY PRIVACY-FIRST TECHNOLOGY</p>
       </div>
     </footer>

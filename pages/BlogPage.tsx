@@ -18,6 +18,9 @@ const BlogPage: React.FC<BlogPageProps> = ({ blogs }) => {
         >
           ← 返回列表
         </button>
+        {selectedBlog.coverImage && (
+          <img src={selectedBlog.coverImage} className="w-full aspect-video rounded-[2rem] object-cover mb-12 border border-white/5 shadow-2xl" alt="Cover" />
+        )}
         <div className="mb-10">
           <h1 className="text-4xl font-bold mb-4">{selectedBlog.title}</h1>
           <div className="flex items-center gap-4 text-sm text-gray-500">
@@ -51,13 +54,17 @@ const BlogPage: React.FC<BlogPageProps> = ({ blogs }) => {
         {blogs.map(blog => (
           <article 
             key={blog.id} 
-            className="bg-[#1F2937] border border-white/5 rounded-2xl overflow-hidden hover:border-[#00FF88]/30 transition-all cursor-pointer group"
+            className="bg-[#1F2937] border border-white/5 rounded-2xl overflow-hidden hover:border-[#00FF88]/30 transition-all cursor-pointer group flex flex-col"
             onClick={() => setSelectedBlog(blog)}
           >
             <div className="aspect-video bg-[#0A0A0F] relative overflow-hidden">
-               <img src={`https://picsum.photos/seed/${blog.id}/600/338`} alt={blog.title} className="object-cover w-full h-full opacity-60 group-hover:scale-110 transition-transform duration-500" />
+               <img 
+                 src={blog.coverImage || `https://picsum.photos/seed/${blog.id}/600/338`} 
+                 alt={blog.title} 
+                 className="object-cover w-full h-full opacity-80 group-hover:scale-110 transition-transform duration-500" 
+               />
             </div>
-            <div className="p-6">
+            <div className="p-6 flex-grow flex flex-col">
               <div className="flex gap-2 mb-3">
                 {blog.tags.map(tag => (
                   <span key={tag} className="text-[10px] uppercase tracking-wider bg-[#00FF88]/10 text-[#00FF88] px-2 py-0.5 rounded-full border border-[#00FF88]/20">{tag}</span>
@@ -65,7 +72,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ blogs }) => {
               </div>
               <h2 className="text-xl font-bold mb-2 group-hover:text-[#00FF88] transition-colors">{blog.title}</h2>
               <p className="text-gray-400 text-sm line-clamp-3 mb-4">{blog.excerpt}</p>
-              <div className="flex items-center justify-between mt-auto">
+              <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
                 <span className="text-xs text-gray-500">{blog.author} • {blog.date}</span>
                 <span className="text-xs font-bold text-[#00FF88]">阅读更多 →</span>
               </div>
